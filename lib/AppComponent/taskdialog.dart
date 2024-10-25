@@ -172,7 +172,6 @@ class TaskDialogHelper {
     );
   }
 
-
   static void deleteTask(BuildContext context, String id) {
     Provider.of<TodoProvider>(context, listen: false).deleteTodo(id);
   }

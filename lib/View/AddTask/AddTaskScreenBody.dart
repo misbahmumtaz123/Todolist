@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../../AppComponent/taskdialog.dart';
-import '../../Constants/utils.dart';
 import '../../Providers/todoprovider.dart';
 
 class AddTaskScreenBody extends StatefulWidget {
@@ -16,7 +15,6 @@ class _AddTaskScreenBodyState extends State<AddTaskScreenBody> {
   @override
   void initState() {
     super.initState();
-    // Fetch todos on init
     Provider.of<TodoProvider>(context, listen: false).fetchTodos();
   }
 
@@ -42,10 +40,17 @@ class _AddTaskScreenBodyState extends State<AddTaskScreenBody> {
               itemBuilder: (context, index) {
                 final todo = todoProvider.todos[index];
                 return Card(
-                  surfaceTintColor: AppColors.PrimaryColor,
-                  shadowColor: AppColors.secondary,
                   child: ListTile(
-                    contentPadding: EdgeInsets.all(8),
+                    leading: IconButton(
+                      icon: Icon(
+                        todo.isDone
+                            ? Icons.check_circle
+                            : Icons.radio_button_unchecked,
+                        color: todo.isDone ? Colors.green : Colors.grey,
+                      ),
+                      onPressed: () =>
+                          TaskDialogHelper.toggleTaskCompletion(context, todo),
+                    ),
                     title: Text(
                       todo.task,
                       style: TextStyle(
@@ -56,7 +61,7 @@ class _AddTaskScreenBodyState extends State<AddTaskScreenBody> {
                     ),
                     subtitle: Text(
                       todo.dueDateTime != null
-                          ? 'Due: ${DateFormat('yyyy-MM-dd – kk:mm').format(todo.dueDateTime!.toDate())}'
+                          ? 'Due: ${DateFormat('yyyy-MM-dd').format(todo.dueDateTime!.toDate())}'
                           : 'No Due Date',
                     ),
                     trailing: Row(
@@ -64,11 +69,13 @@ class _AddTaskScreenBodyState extends State<AddTaskScreenBody> {
                       children: [
                         IconButton(
                           icon: Icon(Icons.edit),
-                          onPressed: () => TaskDialogHelper.showEditTaskDialog(context, todo),
+                          onPressed: () =>
+                              TaskDialogHelper.showEditTaskDialog(context, todo),
                         ),
                         IconButton(
                           icon: Icon(Icons.delete),
-                          onPressed: () => TaskDialogHelper.deleteTask(context, todo.id),
+                          onPressed: () =>
+                              TaskDialogHelper.deleteTask(context, todo.id),
                         ),
                       ],
                     ),
@@ -82,7 +89,6 @@ class _AddTaskScreenBodyState extends State<AddTaskScreenBody> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => TaskDialogHelper.showAddTaskDialog(context),
         child: Icon(Icons.add),
-        backgroundColor: AppColors.PrimaryColor,
       ),
     );
   }

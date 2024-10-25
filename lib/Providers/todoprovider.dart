@@ -12,22 +12,22 @@ class TodoProvider extends ChangeNotifier {
 
   Future<void> fetchTodos() async {
     _isLoading = true;
-    notifyListeners(); // Notify listeners about loading state
+    notifyListeners();
     try {
-      final snapshot = await _firestore.collection('Todos').get();  // Use correct collection name
+      final snapshot = await _firestore.collection('Todos').get();
       _todos = snapshot.docs.map((doc) => Todo.fromFirestore(doc)).toList();
     } catch (e) {
       print("Error fetching todos: $e");
     } finally {
       _isLoading = false;
-      notifyListeners();  // Ensure listeners are notified
+      notifyListeners();
     }
   }
 
   Future<void> addTodo(Todo todo) async {
     try {
       await _firestore.collection('Todos').add(todo.toJson());
-      await fetchTodos();  // Refetch todos after adding a new one
+      await fetchTodos();
     } catch (e) {
       print("Error adding todo: $e");
     }
@@ -36,7 +36,7 @@ class TodoProvider extends ChangeNotifier {
   Future<void> updateTodo(Todo todo) async {
     try {
       await _firestore.collection('Todos').doc(todo.id).update(todo.toJson());
-      await fetchTodos();  // Refetch todos after updating
+      await fetchTodos();
     } catch (e) {
       print("Error updating todo: $e");
     }
@@ -45,10 +45,14 @@ class TodoProvider extends ChangeNotifier {
   Future<void> deleteTodo(String id) async {
     try {
       await _firestore.collection('Todos').doc(id).delete();
-      await fetchTodos();  // Refetch todos after deleting
+      await fetchTodos();
     } catch (e) {
       print("Error deleting todo: $e");
     }
   }
-}
 
+  void toggleTaskCompletion(Todo todo) async {
+    final updatedTodo = todo.copyWith(isDone: !todo.isDone, updatedOn: Timestamp.now());
+    await updateTodo(updatedTodo);
+  }
+}
