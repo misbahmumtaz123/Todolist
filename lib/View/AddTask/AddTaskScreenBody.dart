@@ -46,7 +46,7 @@ class _AddTaskScreenBodyState extends State<AddTaskScreenBody> {
                         todo.isDone
                             ? Icons.check_circle
                             : Icons.radio_button_unchecked,
-                        color: todo.isDone ? Colors.green : Colors.grey,
+                        color: todo.isDone ? Colors.purple : Colors.grey,
                       ),
                       onPressed: () =>
                           TaskDialogHelper.toggleTaskCompletion(context, todo),

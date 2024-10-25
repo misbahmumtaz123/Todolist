@@ -120,7 +120,7 @@ class _CalendarScreenBodyState extends State<CalendarScreenBody> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.check_circle, color: todo.isDone ? Colors.green : Colors.grey),
+                    icon: Icon(Icons.check_circle, color: todo.isDone ? Colors.purple : Colors.grey),
                     onPressed: () {
                       TaskDialogHelper.toggleTaskCompletion(context, todo);
                     },
