@@ -23,7 +23,7 @@ class LoginScreenBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'WEllCOME',
+                'WElCOME',
                 style: GoogleFonts.dynaPuff(
                   textStyle: TextStyle(fontSize: 50,color: AppColors.PrimaryColor),
                 ),

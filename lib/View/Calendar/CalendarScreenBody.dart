@@ -15,7 +15,6 @@ class _CalendarScreenBodyState extends State<CalendarScreenBody> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
-
   TextEditingController _taskController = TextEditingController();
 
   @override
@@ -27,10 +26,6 @@ class _CalendarScreenBodyState extends State<CalendarScreenBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Calendar'),
-        centerTitle: true,
-      ),
       body: Column(
         children: [
           TableCalendar(
@@ -57,25 +52,38 @@ class _CalendarScreenBodyState extends State<CalendarScreenBody> {
             onPageChanged: (focusedDay) {
               _focusedDay = focusedDay;
             },
-            eventLoader: (day) {
-              return _getTasksForDay(day);
-            },
+            eventLoader: _getTasksForDay,
             calendarStyle: CalendarStyle(
               todayTextStyle: TextStyle(color: Colors.purple),
               todayDecoration: BoxDecoration(
-                shape: BoxShape.rectangle,
+                shape: BoxShape.circle,
                 color: Colors.transparent,
               ),
               selectedDecoration: BoxDecoration(
                 color: Colors.purple,
                 shape: BoxShape.circle,
               ),
-              markerDecoration: BoxDecoration(
-                color: Colors.purple,
-                shape: BoxShape.rectangle,
-              ),
               markersMaxCount: 1,
               markersAlignment: Alignment.bottomCenter,
+            ),
+            calendarBuilders: CalendarBuilders(
+              markerBuilder: (context, date, events) {
+                // Show marker only if there are events and the date is not the selected date
+                if (events.isNotEmpty && !isSameDay(_selectedDay, date)) {
+                  return Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: 8.0,
+                      height: 8.0,
+                      decoration: BoxDecoration(
+                        color: Colors.purple,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  );
+                }
+                return SizedBox.shrink();
+              },
             ),
           ),
           const SizedBox(height: 8.0),
@@ -120,7 +128,10 @@ class _CalendarScreenBodyState extends State<CalendarScreenBody> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.check_circle, color: todo.isDone ? Colors.purple : Colors.grey),
+                    icon: Icon(
+                      Icons.check_circle,
+                      color: todo.isDone ? Colors.purple : Colors.grey,
+                    ),
                     onPressed: () {
                       TaskDialogHelper.toggleTaskCompletion(context, todo);
                     },

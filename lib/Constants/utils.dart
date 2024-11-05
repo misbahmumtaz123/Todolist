@@ -7,11 +7,13 @@ class AppColors {
   static const Color lemonSoft = Color(0xFFFFEE66);    // Lemon Soft
   static const Color paleLemon = Color(0xFFFFFACD);    // Pale Lemon
   // Myapp colors
+  static const Color darkpurple = Color(0xff6B48A5);
   static const Color PrimaryColor = Color(0xff7E55C2);
   static const Color themeColor = Color(0xFF928D94);
   static const Color White = Color(0xffffffff);
   static  const Color Black = Color(0xff000000);
   static const Color BGColor = Color(0xFFEEEFF5);
+  static const Color SecondaryColor1=Color(0xffA224B4);
   static const Color SecondaryColor=Color(0xff888BF4);
   static const Color secondary=Color(0xff5151C6);
   static const Color gry=Color(0xA6FFFFFF);
@@ -61,7 +63,7 @@ class TextStyles {
     fontFamily: 'NunitoSans',
 
 
-    color: AppColors.PrimaryColor,
+    color: AppColors.darkpurple,
     // fontFamily:
   );
   static const h2height50 = TextStyle(

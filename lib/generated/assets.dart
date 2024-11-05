@@ -3,7 +3,9 @@ class Assets {
   Assets._();
 
   static const String imagesAdd = 'Assets/Images/Add.png';
+  static const String imagesAddtask = 'Assets/Images/addtask.png';
   static const String imagesArrow = 'Assets/Images/arrow.svg';
+  static const String imagesCalender = 'Assets/Images/calender.png';
   static const String imagesGoogle = 'Assets/Images/google.svg';
   static const String imagesHome = 'Assets/Images/home.svg';
   static const String imagesImg = 'Assets/Images/img.png';
@@ -18,8 +20,12 @@ class Assets {
   static const String imagesOnbrding2 = 'Assets/Images/onbrding2.png';
   static const String imagesOnbrding3 = 'Assets/Images/onbrding3.png';
   static const String imagesPlus = 'Assets/Images/plus.png';
+  static const String imagesPluss = 'Assets/Images/pluss.png';
+  static const String imagesPlustask = 'Assets/Images/plustask.png';
   static const String imagesProfile = 'Assets/Images/profile.svg';
   static const String imagesSetting = 'Assets/Images/setting.svg';
   static const String imagesSplashimg1 = 'Assets/Images/splashimg1.png';
+  static const String imagesTaskicon = 'Assets/Images/taskicon.png';
+  static const String imagesTodo = 'Assets/Images/todo.png';
 
 }

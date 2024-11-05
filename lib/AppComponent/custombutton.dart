@@ -122,9 +122,11 @@ class PrimaryButton extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppColors.SecondaryColor,
-            AppColors.SecondaryColor,
             AppColors.PrimaryColor,
+            AppColors.PrimaryColor,
+            AppColors.PrimaryColor,
+            AppColors.SecondaryColor1,
+
             // AppColors.primaryColor,
           ],
           begin: Alignment.bottomLeft,

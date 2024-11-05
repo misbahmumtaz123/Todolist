@@ -16,7 +16,7 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _currentIndex = 1; // Default to AddTaskScreen
+  int _currentIndex = 1;
 
   final List<String> _titles = [
     'Calendar Screen',
@@ -32,20 +32,20 @@ class _BottomBarState extends State<BottomBar> {
   ];
 
   final List<Widget> _items = [
-    SvgPicture.asset(
-      Assets.imagesNotify,
-      color: Colors.white,
+    Image.asset(
+      'Assets/Images/calender.png',
       height: 30,
+      color: Colors.white,
     ),
     Image.asset(
-      'Assets/Images/plus.png',
-      height: 30,
+      'Assets/Images/plustask.png',
+      height: 40,
       color: Colors.white,
     ),
     SvgPicture.asset(
       Assets.imagesProfile,
       color: Colors.white,
-      height: 30,
+      height: 35,
     ),
   ];
 
@@ -71,8 +71,8 @@ class _BottomBarState extends State<BottomBar> {
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.transparent,
-          color: AppColors.SecondaryColor,
-          buttonBackgroundColor: AppColors.PrimaryColor,
+          color: AppColors.PrimaryColor,
+          buttonBackgroundColor: AppColors.SecondaryColor1,
           height: 60,
           items: _items,
           index: _currentIndex,
