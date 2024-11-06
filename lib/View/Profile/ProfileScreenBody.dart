@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import 'package:google_fonts/google_fonts.dart';
+import '../../Constants/utils.dart';
 import '../../Providers/todoprovider.dart';
 
 class ProfileScreenBody extends StatefulWidget {
@@ -142,12 +143,12 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                             sections: [
                               PieChartSectionData(
                                 value: completedTasks.toDouble(),
-                                color: Colors.purple,
+                                color: AppColors.PrimaryColor,
                                 title: '',
                               ),
                               PieChartSectionData(
                                 value: pendingTasks.toDouble(),
-                                color: Colors.purpleAccent,
+                                color: AppColors.SecondaryColor1,
                                 title: '',
                               ),
                             ],
@@ -174,7 +175,7 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                               Container(
                                 width: 16,
                                 height: 16,
-                                color: Colors.purple,
+                                color: AppColors.PrimaryColor,
                               ),
                               SizedBox(width: 5),
                               Text(
@@ -189,7 +190,7 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
                               Container(
                                 width: 16,
                                 height: 16,
-                                color: Colors.purpleAccent,
+                                color: AppColors.SecondaryColor1,
                               ),
                               SizedBox(width: 5),
                               Text(

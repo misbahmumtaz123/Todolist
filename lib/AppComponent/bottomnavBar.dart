@@ -38,7 +38,7 @@ class _BottomBarState extends State<BottomBar> {
       color: Colors.white,
     ),
     Image.asset(
-      'Assets/Images/plustask.png',
+      'Assets/Images/plusicon.png',
       height: 40,
       color: Colors.white,
     ),
